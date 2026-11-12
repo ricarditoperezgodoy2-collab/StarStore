@@ -1,0 +1,66 @@
+name: Build StarStore IPA
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Prepare App Icon from IMG_0018.png
+        run: |
+          mkdir -p StarStore/Assets.xcassets/AppIcon.appiconset
+          if [ -f "IMG_0018.png" ]; then
+            sips -z 1024 1024 IMG_0018.png --out StarStore/Assets.xcassets/AppIcon.appiconset/icon1024.png
+            cat << 'EOF' > StarStore/Assets.xcassets/AppIcon.appiconset/Contents.json
+          {
+            "images" : [
+              {
+                "filename" : "icon1024.png",
+                "idiom" : "universal",
+                "platform" : "ios",
+                "size" : "1024x1024"
+              }
+            ],
+            "info" : {
+              "author" : "xcode",
+              "version" : 1
+            }
+          }
+          EOF
+          fi
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode Project
+        run: xcodegen generate
+
+      - name: Build Unsigned App
+        run: |
+          xcodebuild -project StarStore.xcodeproj \
+            -scheme StarStore \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY=""
+
+      - name: Package IPA
+        run: |
+          mkdir -p Payload
+          cp -r build/Build/Products/Release-iphoneos/StarStore.app Payload/
+          zip -r StarStore.ipa Payload
+
+      - name: Upload IPA Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: StarStore-IPA
+          path: StarStore.ipa
