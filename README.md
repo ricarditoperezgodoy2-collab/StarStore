@@ -1,33 +1,25 @@
 <div align="center">
-  <img src="icon.png" width="130" height="130" style="border-radius: 28px; object-fit: cover;" alt="StarStore Logo" />
+  <img src="./IMG_0018.png" width="130" height="130" alt="StarStore" />
 
   <h1>StarStore</h1>
 
-  <h3>Explora más allá de lo habitual.</h3>
+  <h3>Your apps, framed in Liquid Glass.</h3>
 
-  <p><i>Descubre, explora y gestiona tus repositorios JSON de iOS con una interfaz nativa Liquid Glass.</i></p>
-
-  <p>
-    <img src="https://shields.io" alt="Stars" />
-    <img src="https://shields.io" alt="Version" />
-  </p>
-  <p>
-    <img src="https://shields.io" alt="Platform" />
-    <img src="https://shields.io" alt="Design" />
-  </p>
+  <p><i>A native SwiftUI repository client for iOS featuring dynamic hero carousels, effortless source management, and a clean translucent interface.</i></p>
 </div>
 
 ---
 
 ## Features
 
-* **Carrusel Hero Aleatorio:** Muestra 8 aplicaciones destacadas al azar con tarjetas redondeadas de gran formato y acceso rápido.
-* **Estética Liquid Glass:** Interfaz fluida, translúcida y minimalista diseñada nativamente en SwiftUI.
-* **Soporte Multi-Repositorio:** Agrega, actualiza y administra múltiples fuentes JSON estándar con un toque.
-* **Clasificación Automática:** Organiza tus catálogos en pestañas dedicadas para **Hoy**, **Juegos**, **Apps**, **Repos** y **Buscar**.
+* **Dynamic Hero Carousel:** Automatically highlights 8 random apps from your added sources in a smooth, manually scrollable showcase.
+* **Liquid Glass Interface:** Built natively with SwiftUI for a clean, modern, and translucent iOS experience.
+* **Multi-Source Support:** Add, refresh, and manage multiple standard JSON repositories in one place.
+* **Smart Categorization:** Automatically organizes your catalog into dedicated **Today**, **Games**, **Apps**, **Repos**, and **Search** tabs.
+* **Detailed App Previews:** View horizontal screenshots, version notes, and direct download links before getting any app.
 
 ---
 
-## Aviso Legal
+## Disclaimer
 
-**StarStore** es un cliente visor de fuentes JSON proporcionadas voluntariamente por cada usuario. No aloja ni distribuye archivos de terceros.
+**StarStore** is strictly a client application designed to parse and display user-provided JSON repository feeds. This project does not host, distribute, or endorse any third-party software.
